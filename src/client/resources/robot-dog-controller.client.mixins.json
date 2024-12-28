@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "me.chillywilly.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"DeathMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
