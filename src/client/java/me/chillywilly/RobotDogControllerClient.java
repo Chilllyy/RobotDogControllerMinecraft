@@ -1,6 +1,7 @@
 package me.chillywilly;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
@@ -31,11 +32,21 @@ public class RobotDogControllerClient implements ClientModInitializer {
 
 	private void sendJump() throws Exception {
 		Request request = new Request.Builder()
-		.url("http://localhost:5000/jump")
+		.url("http://10.0.0.193:5000/jump")
 		.build();
 
-		try (Response response = client.newCall(request).execute()) {
-			if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-		}
+		client.newCall(request).enqueue(new Callback() {
+			@Override
+			public void onFailure(Call arg0, IOException arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onResponse(Call arg0, Response arg1) throws IOException {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 }
